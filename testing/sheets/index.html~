@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+	<form action= "" method="post">
+	    {% csrf_token %}
+	    <input id="title" type="text" name="title">
+	    <br>
+	    <input id="address" type="text" name="address">
+	    <br>
+	    <input action="{% url 'input' %} " type="submit" value="Insert">
+	    <br> <br>
+	</form>
+	<table style="width:100%">
+	    {% for apt in apts %}
+	    <tr>
+		<td> {{apt.title}} </td>
+		<td> {{apt.address}} </td>
+	    </tr>
+	    {% endfor %}
+	    
+	</table>
+	<div class="pagination">
+	    <span class="step-links">
+		{% if apts.has_previous %}
+		<a href="?page={{ apts.previous_page_number }}">previous</a>
+		{% endif %}
+		
+		<span class="current">
+		    Page {{ apts.number }} of {{ apts.paginator.num_pages }}.
+		</span>
+		
+		{% if apts.has_next %}
+		<a href="?page={{ apts.next_page_number }}">next</a>
+		{% endif %}
+	    </span>
+	</div>
+    </body>
+</html>

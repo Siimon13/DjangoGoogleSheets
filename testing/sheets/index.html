@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+	<style> 
+	 table {
+	     font-family: arial, sans-serif;
+	     border-collapse: collapse;
+	     width: 100%;
+	 }
+	 
+	 td, th {
+	     border: 1px solid #dddddd;
+	     text-align: left;
+	     padding: 8px;
+	 }
+	 
+	 tr:nth-child(even) {
+	     background-color: #dddddd;
+	 }
+	</style> 
+    </head>
+    
+    <body>
+	<table>
+	    <tr> 
+		<th> Date </th>
+		<th> Source </th>
+		<th> Link </th>
+		<th> APTINFO </th>
+		<th> COMMENTS </th>		
+	    </tr>
+	    {% for apt in data %}
+	    <tr>
+		<td> {{apt.date}} </td>
+		<td> {{apt.source}} </td>
+		<td> {{apt.link}} </td>
+		<td> {{apt.aptinfo}} </td>
+		<td> {{apt.comments}} </td>
+	    </tr>
+	    {% endfor %}
+	</table>
+    </body>
+</html>
